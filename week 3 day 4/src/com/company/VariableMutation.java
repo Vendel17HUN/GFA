@@ -19,17 +19,18 @@ public class VariableMutation {
 
         int d = 125;
         // Oszd el a d-t 5-tel
-        d /= 2;
+        d /= 5;
         System.out.println(d);
 
         int e = 8;
         // Emeld köbre az e változó értéké
-
+        e = 2;
         System.out.println(e);
 
         int f1 = 123;
         int f2 = 345;
         // Logikai (boolean) értékként írasd ki hogy f1 nagyobb-e f2-nél
+        System.out.println(f1 < f2);
 
 
         int g1 = 350;
