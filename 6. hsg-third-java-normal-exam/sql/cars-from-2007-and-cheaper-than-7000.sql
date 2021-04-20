@@ -1,0 +1,1 @@
+select modelName from carsForSale where dateAcquired like '2007-%' and acquisitionPrice<7000;

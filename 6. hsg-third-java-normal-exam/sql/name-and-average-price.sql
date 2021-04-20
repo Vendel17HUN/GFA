@@ -1,0 +1,1 @@
+select manufacturerName,avg(acquisitionPrice) as averagePrice from manufacturers join carsForSale on manufacturers.id=carsForSale.manufacturer_id group by manufacturerName order by manufacturerName asc;

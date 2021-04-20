@@ -1,0 +1,1 @@
+select count(manufacturers.id) from manufacturers left join carsForSale on manufacturers.id=carsForSale.manufacturer_id where carsForSale.id is null;

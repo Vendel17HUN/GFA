@@ -1,0 +1,1 @@
+select manufacturerName,founder from manufacturers where foundedInYear<1914;

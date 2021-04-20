@@ -1,0 +1,1 @@
+select modelName from carsForSale where acquisitionPrice>8000;

@@ -1,0 +1,1 @@
+select manufacturerName, modelName from carsForSale join manufacturers on carsForSale.manufacturer_id=manufacturers.id where acquisitionPrice>10000;

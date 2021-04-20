@@ -1,0 +1,1 @@
+select manufacturerName,modelName,acquisitionPrice from manufacturers join carsForSale on manufacturers.id=carsForSale.manufacturer_id order by acquisitionPrice desc;

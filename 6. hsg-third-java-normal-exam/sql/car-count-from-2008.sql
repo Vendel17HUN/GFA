@@ -1,0 +1,1 @@
+select count(*) from carsForSale  where dateAcquired like '2008-%';
