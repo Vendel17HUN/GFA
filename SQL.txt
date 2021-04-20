@@ -1,0 +1,167 @@
+Szolgáltatások -> MySQL80 -> indítás
+parancssor rendszergazdagént
+
+cd C:\Program Files\MySQL\MySQL Server 8.0\bin
+mysql -u root -p
+CREATE DATABASE w3schools;
+USE w3schools;
+source C:\Users\jarom\Desktop\Tatto\tattoo-syllabus\materialreview\week-13\SQL/w3schools.sql
+show databases;
+SELECT * FROM customers;
+SELECT * FROM offices;
+SELECT * FROM products;
+SELECT * FROM payments;
+exit
+
+Video parancsok
+SELECT * FROM customers;
+SELECT CustomerName, Country FROM customers;
+SELECT CustomerName, Country, City FROM customers WHERE City = 'London';
+SELECT CustomerName, Country FROM customers LIMIT 10;
+SELECT CustomerName, Country FROM customers LIMIT 10 OFFSET 10;
+SELECT CustomerName, Country FROM customers ORDER BY CustomerName DESC;
+SELECT CustomerName, Country FROM customers ORDER BY CustomerName DESC LIMIT 10 OFFSET 10;
+SELECT * FROM products WHERE SipplierID = 1;
+SELECT * FROM products WHERE SipplierID = 1 AND Price < 15;
+SELECT * FROM products WHERE CategoryID = 1 AND Price > 15;
+
+Feladatok
+SELECT title FROM movies;
+SELECT director FROM movies; 
+SELECT title, director FROM movies; 
+SELECT title, year FROM movies; 
+SELECT * FROM movies; 
+SELECT id, title FROM movies WHERE id = 6;
+SELECT title, year FROM movies WHERE year BETWEEN 2000 AND 2010;
+SELECT title, year FROM movies WHERE year < 2000 OR year > 2010;
+SELECT title, year FROM movies WHERE year <= 2003;
+SELECT title, year FROM movies WHERE year <= 2003;
+SELECT title, director FROM movies WHERE director = "John Lasseter";
+SELECT title, director FROM movies WHERE (not) director (!)= "John Lasseter";
+SELECT * FROM movies WHERE title LIKE "WALL-_" ("WALL%");
+SELECT DISTINCT director FROM movies ORDER BY director ASC;
+SELECT DISTINCT director FROM movies ORDER BY director ASC;
+SELECT DISTINCT director FROM movies ORDER BY director ASC;
+SELECT title FROM movies ORDER BY title ASC LIMIT 5 OFFSET 5;
+INSERT INTO boxoffice VALUES (4, 8.7, 340000000, 270000000);
+UPDATE movies SET director = "John Lasseter" WHERE id = 2;
+UPDATE movies SET title = "Toy Story 3", director = "Lee Unkrich" WHERE id = 11;
+DELETE FROM movies where year < 2005;
+DELETE FROM movies where director = "Andrew Stanton";
+CREATE TABLE Database (Name TEXT, Version FLOAT, Download_count INTEGER);
+SELECT MAX(years_employed) as Max_years_employed FROM employees;
+SELECT role, COUNT(*) as Number_of_artists FROM employees WHERE role = "Artist";
+SELECT role, COUNT(*) FROM employees GROUP BY role;
+SELECT role, SUM(years_employed) FROM employees GROUP BY role HAVING role = "Engineer";
+
+SELECT title, domestic_sales, international_sales FROM movies JOIN boxoffice ON movies.id = boxoffice.movie_id;
+SELECT title, domestic_sales, international_sales FROM movies JOIN boxoffice ON movies.id = boxoffice.movie_id WHERE international_sales > domestic_sales;
+SELECT title, rating FROM movies JOIN boxoffice ON movies.id = boxoffice.movie_id ORDER BY rating DESC;
+SELECT DISTINCT building FROM employees;
+SELECT * FROM buildings;
+SELECT DISTINCT building_name, role FROM buildings LEFT JOIN employees ON building_name = building;
+SELECT name, role FROM employees WHERE building IS NULL;
+SELECT DISTINCT building_name FROM buildings LEFT JOIN employees ON building_name = building WHERE role IS NULL;
+SELECT director, COUNT(id) as Num_movies_directed FROM movies GROUP BY director;
+SELECT director, SUM(domestic_sales + international_sales) as Cumulative_sales_from_all_movies FROM movies INNER JOIN boxoffice ON movies.id = boxoffice.movie_id GROUP BY director;
+
+
+AQL VIZSGA TRIAL
+
+SELECT name FROM customers where country = 'Hungary';
+SELECT name FROM customers where city = 'Budapest' OR city= 'Brno';
+SELECT COUNT(*) as customers FROM customers where city = 'Budapest';
+SELECT id, MAX(total) from Orders; 
+SELECT id FROM ORDERS WHERE order_date between '2021-01-22 00:00:01' AND '2021-01-22 23:59:59';
+Select Count(*) from orders where total > 1000;
+Select costumers.id, customers.name from customers, orders where costumers.id = orders.id and orders.total < 200;
+Select costumers.id, customers.name from customers, orders where costumers.id = orders.customer_id and orders.total < 200;
+Select customers.name as name, count(orders.order_date) as number_of_orders from customers left join orders on orders.customer_id = customers.id Group by customers.name;
+
+
+
+CREATE TABLE Orders (id int, total decimal, order_date datetime, customer_id int, PRIMARY KEY(id));
+INSERT INTO orders (id, total, order_date, customer_id) VALUES (1, 959.1, '2021-01-22 00:28:53', 100);
+INSERT INTO orders (id, total, order_date, customer_id) VALUES (2, 703.6, '2021-01-22 09:23:59', 89), (3, 1374.1, '2021-01-22 13:52:07', 89), (4, 1385, '2021-01-22 03:40:41', 20);
+INSERT INTO customer (id, name, country, city) VALUES (2, "Maria Lebsack DDS", "Czechia", "Brno"), (3, "Gloria Hyatt", "Hungary", "Debrecen"), (4, "Clara Spinka", "Panama", "Gunnerburgh"), (5, "Lonnie Stamm I", "Hungary", "Debrecen"), (6, "Pat Glover", "Ukraine", "West Issac"), (7, "Stacy Doyle Jr.", "Czechia", "Brno"), (8, "Lester Wyman", "Burundi", "Pearlineland"), (9, "Tyler Marquardt", "Argentina", "New Haley"), (10, "Mrs. Carrie Powlowski", "Czechia", "Prague");
+
+INSERT INTO customer (id, name, country, city) VALUES (11, "Barry Pollich", "Czechia", "Prague"), (12, "Shane Green III", "Hungary", "Budapest"), (13, "Katie Murphy", "Czechia", "Prague"), (14, "Agnes Torphy", "Czechia", "Prague"), (15, "Jeremiah Satterfield", "Hungary", "Budapest");
+
+
+4	1385	2021-01-22T03:40:41.063Z	20
+5	747.7	2021-01-20T21:52:58.248Z	63
+6	517.9	2021-01-24T15:38:49.595Z	89
+7	830.4	2021-01-20T07:29:12.267Z	95
+8	967.3	2021-01-20T12:53:27.423Z	84
+9	931.2	2021-01-21T07:33:14.933Z	89
+10	1141.2	2021-01-19T20:56:49.386Z	6
+11	569.4	2021-01-20T23:42:01.551Z	15
+12	1023.4	2021-01-24T03:24:39.362Z	37
+13	788.7	2021-01-21T00:49:51.610Z	34
+14	996.5	2021-01-19T20:53:52.471Z	40
+15	450.7	2021-01-21T11:35:42.433Z	52
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE pizza
+(
+    id              INT NOT NULL AUTO_INCREMENT,
+    name       	VARCHAR(80),
+address       	VARCHAR(80),
+pizza VARCHAR(80),
+    PRIMARY KEY (id)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT name FROM customer where country = 'Hungary' into outfile 'c:\Users\jarom\Desktop\SQL\exam-trial-sql\customers-from-hungary.sql'
+
+mysqldump -u root -p customers-from-hungary.sql > C:\Users\jarom\Desktop\SQL\exam-trial-sql\customers-from-hungary.sql
+
+  SELECT name FROM customer where country = 'Hungary' into outfile 'C:/Users/jarom/Desktop/SQL/exam-trial-sql/customers-from-hungary.txt'
+FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
+  LINES TERMINATED BY '\n'
+  FROM customer;
+
+SELECT name FROM customer where country = 'Hungary' into outfile '/Desktop/SQL/exam-trial-sql/customers-from-hungary.txt';
+
+
+SELECT name FROM customer where country = 'Hungary' into sqlfile 'C:\\Users\\jarom\\Desktop\\SQL\\exam-trial-sql\\customers-from-hungary.sql';
+
+
+
+
+
